@@ -1,0 +1,35 @@
+{
+  "name": "@arndesk/awaitdelay",
+  "version": "1.0.1",
+  "description": "A Node Js utility to add timeouts to promises",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arndesk/awaitdelay"
+  },
+  "engines": {
+		"node": ">=8"
+	},
+  "keywords": [
+    "promise",
+    "timeout",
+    "error",
+    "async",
+    "await",
+    "promises",
+    "time",
+    "out",
+    "promise timeout",
+    "await timeout"
+  ],
+	"author": {
+		"name": "Arnob Arjun",
+		"email": "mauraiz55@gmail.com"
+	},
+  "license": "MIT",
+  "homepage": "https://github.com/arndesk/awaitdelay#readme"
+}

@@ -14,6 +14,12 @@ async function awaitdelay(promise, { timeout }) {
                 timeout)
             )
         ]);
+    } catch (error) {
+        if (error instanceof Error) {
+            throw error; // re-throw the error
+        } else {
+            throw new Error(error); // create a new Error instance with the string
+        }
     } finally {
         clearTimeout(timer);
     }

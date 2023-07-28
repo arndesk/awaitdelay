@@ -1,15 +1,23 @@
 // Custom Error for invalid arguments
-class PromiseUtilsError extends Error {
+class UtilsError extends Error {
     constructor(message) {
         super(message);
-        this.name = 'PromiseUtilsError';
+        this.name = 'UtilsError';
+    }
+}
+
+// Custom Error for timeout
+class TimeoutError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'TimeoutError';
     }
 }
 
 async function awaitdelay(promise, { timeout }) {
     // Check if timeout is a positive number
     if (typeof timeout !== 'number' || Math.sign(timeout) !== 1) {
-        throw new PromiseUtilsError('Timeout should be a positive number');
+        throw new UtilsError('Timeout should be a positive number');
     }
 
     let timer;
@@ -18,7 +26,7 @@ async function awaitdelay(promise, { timeout }) {
             promise,
             new Promise((_, reject) =>
                 timer = setTimeout(() => 
-                    reject(new Error('Timeout')), 
+                    reject(new TimeoutError(`The promise did not resolve within ${timeout} milliseconds.`)), 
                 timeout)
             )
         ]);
@@ -29,9 +37,10 @@ async function awaitdelay(promise, { timeout }) {
 
 // Node.js module exports
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { awaitdelay, PromiseUtilsError };
+    module.exports = { awaitdelay, UtilsError, TimeoutError };
 } else {
     // ESM
     self.awaitdelay = awaitdelay;
-    self.PromiseUtilsError = PromiseUtilsError;
+    self.UtilsError = UtilsError;
+    self.TimeoutError = TimeoutError;
 }

@@ -41,7 +41,7 @@ async function main() {
     const result = await awaitdelay(slowPromise, { timeout: 5000 }); // 5 seconds timeout
     console.log(result);
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
   }
 }
 

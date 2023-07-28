@@ -29,9 +29,9 @@
 <pre>
 <code>
 // ES Modules import
-import { awaitdelay, TimeoutError, UtilsError } from '@arndesk/awaitdelay';
+import awaitdelay from '@arndesk/awaitdelay';
 // CommonJS require
-const { awaitdelay, TimeoutError, UtilsError } = require('@arndesk/awaitdelay');
+const awaitdelay = require('@arndesk/awaitdelay');
 
 // Async function to use the awaitdelay function
 async function main() {
@@ -41,13 +41,7 @@ async function main() {
     const result = await awaitdelay(slowPromise, { timeout: 5000 }); // 5 seconds timeout
     console.log(result);
   } catch (error) {
-    if (error instanceof TimeoutError) {
-      console.error(`Operation timed out: ${error.message}`);
-    } else if (error instanceof UtilsError) {
-      console.error(`Invalid utility usage: ${error.message}`);
-    } else {
-      console.error(error.message);
-    }
+    console.error(error.message);
   }
 }
 

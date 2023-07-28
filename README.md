@@ -1,7 +1,7 @@
 <br />
 
 <h1 align="center">@arndesk/awaitdelay</h1>
-<h4 align="center">A utility to add timeouts to promises</h4>
+<h4 align="center">A Node Js utility to add timeouts to promises</h4>
 
 <p align="center">
   <a href="#get-started">Get Started</a> &bull;
@@ -29,9 +29,9 @@
 <pre>
 <code>
 // ES Modules import
-import { awaitdelay } from '@arndesk/awaitdelay';
+import { awaitdelay, TimeoutError, UtilsError } from '@arndesk/awaitdelay';
 // CommonJS require
-const { awaitdelay } = require('@arndesk/awaitdelay');
+const { awaitdelay, TimeoutError, UtilsError } = require('@arndesk/awaitdelay');
 
 // Async function to use the awaitdelay function
 async function main() {
@@ -41,12 +41,17 @@ async function main() {
     const result = await awaitdelay(slowPromise, { timeout: 5000 }); // 5 seconds timeout
     console.log(result);
   } catch (error) {
-    console.error(error.message);
+    if (error instanceof TimeoutError) {
+      console.error(`Operation timed out: ${error.message}`);
+    } else if (error instanceof UtilsError) {
+      console.error(`Invalid utility usage: ${error.message}`);
+    } else {
+      console.error(error.message);
+    }
   }
 }
 
 main();
-
 </code>
 </pre>
 

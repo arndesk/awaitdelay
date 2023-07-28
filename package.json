@@ -1,6 +1,6 @@
 {
   "name": "@arndesk/awaitdelay",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Node Js utility to add timeouts to promises",
   "main": "index.js",
   "types": "index.d.ts",
